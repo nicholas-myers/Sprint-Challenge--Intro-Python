@@ -22,10 +22,9 @@ class City:
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
 import csv
-from decimal import *
-    
-cities = []
 
+cities = []
+# print(len(cities))
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
@@ -33,14 +32,14 @@ def cityreader(cities=[]):
     with open("cities.csv") as csvfile:
         city_reader = csv.reader(csvfile)
         next(city_reader)
-        for row in city_reader:
-                city = City(row[0], row[3],row[4])
-                cities.append(city)
+        for index, row in enumerate(city_reader):
+                index = City(row[0], float(row[3]),float(row[4]))
+                cities.append(index)
     return cities
 
 cityreader(cities)
-
-print(cities)
+# print(len(cities))
+# print(cities)
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
     print(c)
